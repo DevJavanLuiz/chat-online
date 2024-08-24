@@ -7,8 +7,12 @@ class Room(models.Model):
         on_delete=models.CASCADE,
     )
     title = models.CharField(max_length=200)
-    message = models.ManyToManyField('Message')
+    message = models.ManyToManyField('Message', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
 
 
 
@@ -19,3 +23,7 @@ class Message(models.Model):
     )
     text = models.TextField()
     created_ad = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.first_name}: {self.text}"
+    

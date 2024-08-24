@@ -1,0 +1,42 @@
+{% extends "base.html" %} {%block content%}
+<div class="d-flex h-100">
+  {% comment %} Salas {% endcomment %}
+  <div class="chat-rooms h-100 w-25">
+    <div class="rooms m-3">
+      <div class="d-flex justify-content-between">
+        <h3>chat<span class="text-primary">us</span></h3>
+        <button class="btn btn-transparent mb-2">
+          <i class="bi bi-plus-circle-fill text-primary"></i>
+        </button>
+      </div>
+
+      <ul class="list-group shadow border-0">
+        {% for room in rooms %} {% comment %}
+        <li class="list-group-item active"></li>
+        {% endcomment %}
+        <li class="list-group-item">{{room.title}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {% comment %} Mensagens {% endcomment %}
+  <div class="chat-messages h-100 w-75">
+    {% comment %} Lista de mensagens {% endcomment %}
+    <div class="messages card m-3 p-3 h-75 shadow border-0 overflow-scroll">
+      {%include 'chat/list-message.html'%}
+    </div>
+
+    {% comment %} Input {% endcomment %}
+    <div class="send-message card m-3 shadow border-0">
+      <form>
+        <input
+          type="text"
+          class="form-control border-1 fs-5"
+          placeholder="Escreva uma mensagem"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}
